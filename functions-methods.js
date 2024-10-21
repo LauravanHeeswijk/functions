@@ -3,23 +3,59 @@
 
 
 /* Opdracht  1 */
+
 // Schrijf een functie genaamd getEmailDomain, die een emailadres verwacht en de domeinnaam teruggeeft. Een domeinnaam is hetgeen dat na het @ in het adres staat
 // ---- Verwachte uitkomsten:
 // getEmailDomain("n.eeken@novi-education.nl") geeft novi-education.nl
+
+function getEmailDomain(email) {
+    const parts = email.split('@');
+    return parts[1];
+}
+console.log (getEmailDomain("n.eeken@novi-education.nl"));
+
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
+
+function getEmailDomain(email) {
+    const parts = email.split('@');
+    return parts[1];
+}
+console.log (getEmailDomain("t.mellink@novi.nl"));
+
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 
-
+function getEmailDomain(email) {
+    const parts = email.split('@');
+    return parts[1];
+}
+console.log (getEmailDomain("a.wiersma@outlook.com"));
 
 
 /* Opdracht  2 */
 // Schrijf een functie genaamd typeOfEmail, die een emailadres verwacht. De functie checkt of het emailadres een novi domein heeft (medewerker), een novi-education domein (student), of extern domein (zoals gmail of outlook)
 // ---- Verwachte uitkomsten:
+
 // typeOfEmail("n.eeken@novi-education.nl") geeft "Student"
+
+    function typeOfEmail(email) {
+        const parts = email.split('@');
+        const domain = parts[1];
+
+        if (domain === "novi.nl") {
+            return "Medewerker";
+        } else if (domain === "novi-education.nl") {
+            return "Student";
+        } else {
+            return "Extern";
+        }
+    }
+console.log(typeOfEmail("n.eeken@novi-education.nl"));
+console.log(typeOfEmail("t.mellink@novi.nl"));
+console.log(typeOfEmail("a.wiersma@outlook.com"));
+
 // typeOfEmail("t.mellink@novi.nl") geeft geeft "Medewerker"
 // typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
-
 
 
 /* Opdracht  3 */
@@ -28,6 +64,27 @@
 // * Er een @ in voorkomt
 // * Er géén , in voorkomt
 // * Er géén . in voorkomt als allerlaatste karakter (dus hotmail.com is valide, net als outlook.nl, maar outlooknl. niet)
+
+function checkEmailValidity(email) {
+    if (!email.includes('@')) {
+        return false;
+    }
+    if (email.includes(',')) {
+        return false;
+    }
+    if (email.endsWith('.')) {
+        return false;
+    }
+   return true
+}
+
+console.log (checkEmailValidity("n.eeken@novi.nl"))
+console.log (checkEmailValidity("tessmellink@novi.nl"))
+console.log (checkEmailValidity("n.eekenanovi.nl"))
+console.log (checkEmailValidity("n.eeken@novinl."))
+console.log (checkEmailValidity("tessmellink@novi,nl"))
+
+
 // ---- Verwachte uitkomsten:
 // checkEmailValidity("n.eeken@novi.nl") geeft true - want @ en punt op de juiste plek
 // checkEmailValidity("tessmellink@novi.nl") geeft true - want @ en punt op de juiste plek
