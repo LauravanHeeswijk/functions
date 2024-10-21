@@ -3,6 +3,14 @@
 // Tip: je mag hier geen ingebouwde object methoden gebruiken, dus daar hoef je niet naar te kijken.
 
 const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
+let cumLaudeCount = 0;
+
+for (let i = 0; i < grades.length; i++) {
+    if (grades[i] >= 8) {
+    cumLaudeCount++;
+    }
+}
+console.log(cumLaudeCount);
 
 /* Opdracht  1: Cum Laude */
 
@@ -17,6 +25,7 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // ---- Verwachte uitkomst: 6
 
 
+
 /*  1b: Omschrijven tot een herbruikbare functie   */
 // Schrijf een functie genaamd cumLaude, die een array van cijfers verwacht (zoals grades) en het aantal Cum laude studenten teruggeeft. Gebruik hiervoor jouw antwoord van 1a.
 // Zorg ervoor dat jouw functie ook werkt als we een andere array met eindcijfers willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
@@ -27,8 +36,19 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // cumLaude([6, 4, 5]) geeft 0
 // cumLaude([8, 9, 4, 6, 10]) geeft 3
 
+function cumLaude (checkGrades){
+    let cumLaudeCount = 0;
 
-
+    for (let i = 0; i < checkGrades.length; i++) {
+        if (checkGrades[i] >= 8) {
+            cumLaudeCount++;
+        }
+    }
+    return cumLaudeCount
+}
+// console.log(cumLaude([9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6]));
+// console.log(cumLaude([6, 4, 5]));
+// // console.log(cumLaude([8, 9, 4, 6, 10]));
 
 /* Opdracht  2: Gemiddeld cijfer */
 
@@ -42,6 +62,23 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
 // ---- Verwachte uitkomst: 6.642857142857143
 
+// Array van cijfers die we willen gebruiken
+const gradesNew = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
+
+// Stap 2: Maak een variabele om de som bij te houden
+let som = 0;
+
+// Stap 3: Loop door de array en bereken de totale som
+for (let i = 0; i < gradesNew.length; i++) {
+    som += gradesNew[i];
+}
+
+// Stap 4: Bereken het gemiddelde door de som te delen door het aantal cijfers
+let gemiddelde = som / gradesNew.length;
+
+// Stap 5: Log het gemiddelde
+console.log(gemiddelde);
+
 
 /* 2b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd averageGrade, die een array van cijfers verwacht (zoals grades) en het gemiddelde cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 2a.
@@ -52,6 +89,29 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // averageGrade(grades) geeft 6.642857142857143
 // averageGrade([6, 4, 5]) geeft 5
 // averageGrade([8, 9, 4, 6, 10]) geeft 7.4
+
+// Stap 1: Schrijf de functie averageGrade
+function averageGrade(cijfers) {
+    // Stap 2: Maak een variabele om de som bij te houden
+    let som = 0;
+
+    // Stap 3: Loop door de array en bereken de totale som
+    for (let i = 0; i < cijfers.length; i++) {
+        som += cijfers[i];
+    }
+
+    // Stap 4: Bereken het gemiddelde door de som te delen door het aantal cijfers
+    let gemiddelde = som / cijfers.length;
+
+    // Stap 5: Geef het gemiddelde terug
+    return gemiddelde;
+}
+
+// Test de functie met verschillende arrays
+const gradesSecond = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
+console.log(averageGrade(gradesSecond));
+console.log(averageGrade([6, 4, 5]));
+console.log(averageGrade([8, 9, 4, 6, 10]));
 
 
 /* 2c: Afronden op twee decimalen */
